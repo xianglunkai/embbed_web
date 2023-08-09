@@ -1,0 +1,47 @@
+{
+    "name": "http",
+    "description": "Embedthis Http Library",
+    "title": "Embedthis Http",
+    "version": "9.0.1",
+    "keywords": [
+        "http",
+        "webserver"
+    ],
+    "author": {
+        "name": "Embedthis Software",
+        "email": "dev@embedthis.com",
+        "url": "https://embedthis.com"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/embedthis/http.git"
+    },
+    "bugs": {
+        "url": "http://github.com/embedthis/http/issues"
+    },
+    "licenses": "Commercial",
+    "dependencies": {
+        "assist": "~1",
+        "certs": "~1",
+        "mbedtls": "~2.8",
+        "me-win": "~1",
+        "mpr": "~9",
+        "mpr-mbedtls": "~3",
+        "osdep": "~1",
+        "pcre": "~1",
+        "ssl": "~1"
+    },
+    "optionalDependencies": {
+        "mpr-openssl": "~1"
+    },
+    "devDependencies": {
+        "makeme": ">=0.9.0",
+        "pak": ">=0.11.0"
+    },
+    "files": [
+        "dist/",
+        "doc/api/"
+    ],
+    "import": true,
+    "origin": "embedthis/http"
+}

@@ -1,0 +1,36 @@
+{
+    "name": "makerom",
+    "description": "Embedthis Makerom",
+    "title": "Embedthis Makerom",
+    "version": "1.0.0",
+    "keywords": [
+        "makerom",
+        "mpr"
+    ],
+    "author": {
+        "name": "Embedthis Software",
+        "email": "dev@embedthis.com",
+        "url": "https://embedthis.com"
+    },
+    "bugs": {
+        "url": "http://github.com/embedthis/makerom/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/embedthis/makerom.git"
+    },
+    "licenses": "MIT",
+    "dependencies": {
+        "mpr": "~6"
+    },
+    "devDependencies": {
+        "makeme": ">=1.0.0",
+        "pak": ">=1.0.0"
+    },
+    "files": [
+        "dist/",
+        "doc/"
+    ],
+    "import": true,
+    "origin": "embedthis/makerom"
+}

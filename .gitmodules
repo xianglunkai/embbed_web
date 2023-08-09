@@ -1,0 +1,6 @@
+[submodule "modules/appweb"]
+	path = modules/appweb
+	url =  https://github.com/AbsoluteZero-ljz/appweb
+[submodule "modules/appweb-doc"]
+	path = modules/appweb-doc
+	url = https://github.com/embedthis/appweb-doc
