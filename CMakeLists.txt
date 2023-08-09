@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(grid_tied_allocation VERSION 1.0)
+project(webapp VERSION 1.0)
 
 #set the default path for built executables to the "bin" directory
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_CURRENT_SOURCE_DIR}/bin)
@@ -20,51 +20,34 @@ endif(CMAKE_COMPILER_IS_GNUCXX)
 
 
 include_directories(
-  include
-  ../lib/nlopt/include
-  ../lib/osqp/include/osqp
+  ./webapp
+  ./lib/glog/include
+  ./lib/uorb/include
+  ./msg/
+  ./msg/uorb/
+  ./msg/uorb/topics
 )
 
-
 link_directories(
-	../lib/nlopt/lib
-  ../lib/osqp/lib
+	./lib/glog/lib
+  ./lib/uorb/lib
 )
 
 
 link_libraries(
-	rt
-	pthread
-	nlopt
-  osqpstatic
+  glog
+  uorb
 )
 
-set(library_name grid_tied_allocation)
+# generate uORB messages
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/msg)
 
-add_library(${library_name}
-  src/common.cc
-  src/dp_cost.cc
-  src/graph_point.cc
-  src/grid_tied_allocation.cc
-  src/heuristic_optimizer.cc
-  src/nlopt_optimizer.cc
-  src/optimizer_config.cc
-  src/osqp_optimizer.cc
-  src/small_load_assignment.cc
-)
+# build executable files
+aux_source_directory(${CMAKE_CURRENT_SOURCE_DIR}/webapp MAIN_SRC)
+add_executable(${PROJECT_NAME} ${MAIN_SRC})
 
-target_link_libraries(${library_name} rt pthread)
-
-install ( TARGETS ${PROJECT_NAME}
-          RUNTIME DESTINATION ${RELATIVE_INSTALL_BIN_DIR}
-          LIBRARY DESTINATION ${RELATIVE_INSTALL_LIB_DIR}
-          ARCHIVE DESTINATION ${RELATIVE_INSTALL_LIB_DIR}
-          INCLUDES DESTINATION ${RELATIVE_INSTALL_INCLUDE_DIR})
-
-
-install(DIRECTORY include/
-        DESTINATION include/)
-
+# target link uorb_msg
+target_link_libraries(${PROJECT_NAME} PRIVATE rt pthread uorb_msgs)
 
 if(BUILD_TESTING)
   add_subdirectory(test)
